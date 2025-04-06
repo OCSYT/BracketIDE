@@ -1,0 +1,41 @@
+{
+  "name": "bracket-ide",
+  "version": "1.0.0",
+  "description": "An Custom IDE",
+  "main": "Main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "author": "BracketProto",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^35.1.4",
+    "electron-builder": "^26.0.12"
+  },
+  "dependencies": {
+    "ansi_up": "^6.0.5",
+    "escape-html": "^1.0.3",
+    "isbinaryfile": "^5.0.4"
+  },
+  "build": {
+    "appId": "com.bracketproto.bracket-ide",
+    "productName": "BracketIDE",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "**/*",
+      "!dist"
+    ],
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    }
+  }
+}
