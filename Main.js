@@ -1,10 +1,16 @@
-const { app, BrowserWindow, ipcMain, dialog } = require("electron");
-const Path = require("path");
-const Fs = require("fs");
-const { exec, spawn } = require("child_process");
-const IsBinaryFile = require("isbinaryfile").isBinaryFile;
-const AnsiUpModule = require("ansi_up");
-const EscapeHtml = require("escape-html");
+import { app, BrowserWindow, ipcMain, dialog } from "electron";
+import { join } from "path";
+import {
+  writeFileSync,
+  lstatSync,
+  readFileSync,
+  readdirSync,
+  existsSync,
+} from "fs";
+import { exec, spawn } from "child_process";
+import { isBinaryFile as IsBinaryFile } from "isbinaryfile";
+import { AnsiUp as _AnsiUp } from "ansi_up";
+import EscapeHtml from "escape-html";
 
 const MaxFileSize = 100 * 1024 * 1024;
 
@@ -13,7 +19,7 @@ function CreateWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: Path.join(__dirname, "Preload.js"),
+      preload: join(__dirname, "Preload.js"),
       nodeIntegration: true,
       contextIsolation: true,
       devTools: true,
@@ -46,30 +52,30 @@ ipcMain.on("save-file", async (Event, Data) => {
   });
 
   if (filePath) {
-    Fs.writeFileSync(filePath, Data);
+    writeFileSync(filePath, Data);
   }
 });
 
 const CheckBinary = async (FilePath) => {
-  const Stats = Fs.lstatSync(FilePath);
+  const Stats = lstatSync(FilePath);
   if (Stats.size > MaxFileSize) {
     return true;
   }
 
-  const Data = Fs.readFileSync(FilePath);
+  const Data = readFileSync(FilePath);
   const Result = await IsBinaryFile(Data, Stats.size);
   return Result;
 };
 
 const GetDirectoryContents = async (DirPath) => {
   const Result = { Path: DirPath, Items: [] };
-  const Items = Fs.readdirSync(DirPath);
+  const Items = readdirSync(DirPath);
 
   for (const Item of Items) {
-    const FullPath = Path.join(DirPath, Item);
+    const FullPath = join(DirPath, Item);
 
     try {
-      const Stat = Fs.lstatSync(FullPath);
+      const Stat = lstatSync(FullPath);
 
       if (Stat.isDirectory()) {
         Result.Items.push({
@@ -100,7 +106,7 @@ ipcMain.handle("open-folder", async () => {
 
   if (filePaths?.length) {
     const FolderPath = filePaths[0];
-    if (Fs.existsSync(FolderPath)) {
+    if (existsSync(FolderPath)) {
       return await GetDirectoryContents(FolderPath);
     }
   }
@@ -109,22 +115,22 @@ ipcMain.handle("open-folder", async () => {
 });
 
 ipcMain.handle("load-children", async (Event, FolderPath) => {
-  if (Fs.existsSync(FolderPath) && Fs.lstatSync(FolderPath).isDirectory()) {
+  if (existsSync(FolderPath) && lstatSync(FolderPath).isDirectory()) {
     return await GetDirectoryContents(FolderPath);
   }
   return { Path: FolderPath, Items: [] };
 });
 
 ipcMain.handle("load-file", async (Event, FilePath) => {
-  if (Fs.existsSync(FilePath)) {
+  if (existsSync(FilePath)) {
     try {
-      const Stats = Fs.lstatSync(FilePath);
+      const Stats = lstatSync(FilePath);
       if (Stats.size > MaxFileSize) return null;
 
       const IsBinary = await CheckBinary(FilePath);
       if (IsBinary) return null;
 
-      return Fs.readFileSync(FilePath, "utf-8");
+      return readFileSync(FilePath, "utf-8");
     } catch (Error) {
       return null;
     }
@@ -178,7 +184,7 @@ function InitPowerShell(Event) {
 
 function ConvertAnsiToHtml(Input) {
   const EscapedInput = EscapeHtml(Input);
-  const AnsiUp = new AnsiUpModule.AnsiUp();
+  const AnsiUp = new _AnsiUp();
   const Output = AnsiUp.ansi_to_html(Input);
   return Output;
 }
