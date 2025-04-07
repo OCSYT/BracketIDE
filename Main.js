@@ -19,7 +19,7 @@ function CreateWindow() {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: join(__dirname, "Preload.js"),
+      preload: join(import.meta.dirname, "Preload.js"),
       nodeIntegration: true,
       contextIsolation: true,
       devTools: true,
