@@ -8,7 +8,7 @@ html {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background-color: #0f111a;
+    background-color: #0a0b0f;
     color: #e0e0e0;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -21,7 +21,7 @@ html {
 }
 
 #Sidebar {
-    background-color: #1a1c2c;
+    background-color: #12141c;
     color: #e0e0e0;
     padding: 10px;
     display: flex;
@@ -39,7 +39,7 @@ html {
 
 #Sidebar button {
     margin-bottom: 5px;
-    background-color: #2a2e45;
+    background-color: #1a1c26;
     color: #ffffff;
     border: none;
     padding: 8px;
@@ -53,7 +53,7 @@ html {
 }
 
 #Sidebar button:hover {
-    background-color: #3a3f5a;
+    background-color: #3d3f50;
 }
 
 #SidebarResizer {
@@ -62,7 +62,7 @@ html {
     right: 0;
     width: 5px;
     height: 100%;
-    background-color: #5a5f7a;
+    background-color: #3d3f50;
     cursor: ew-resize;
 }
 
@@ -89,20 +89,20 @@ html {
     width: 100%;
     height: 100%;
     font-family: "JetbrainsMono", monospace;
-    background-color: #1b1d2b;
+    background-color: #0a0b0f;
 }
 
 .CodeMirror {
     height: 100% !important;
     width: 100% !important;
     background-color: transparent;
-    color: #f8f8f2;
+    color: #d5d8da;
     padding-left: 0px;
     border: none;
     outline: none;
 }
 
-.CodeMirror>* {
+.CodeMirror > * {
     overflow: auto !important;
 }
 
@@ -113,66 +113,67 @@ html {
 .CodeMirror-gutter,
 .CodeMirror-gutters,
 .CodeMirror-linenumbers {
-    background-color: #212330;
+    background-color: #12141c;
     border-color: transparent;
-    color: #c0c0c0;
+    color: #6c6f93;
     min-width: 0px;
 }
 
 .CodeMirror .cm-keyword {
-    color: #c792ea !important;
+    color: #e95378 !important;
 }
 
 .cm-tag {
-    color: #ffcb6b !important;
+    color: #27d797 !important;
 }
 
 .cm-tag.cm-closetag {
-    color: #f07178 !important;
+    color: #27d797 !important;
 }
 
 .cm-atom {
-    color: #f78c6c !important;
+    color: #fab38e !important;
 }
 
 .cm-builtin {
-    color: #82aaff !important;
+    color: #21bfc2 !important;
 }
 
 .cm-variable-2 {
-    color: #ffcb6b !important;
+    color: #fac29a !important;
 }
 
 .cm-string {
-    color: #c3e88d !important;
+    color: #fab38e !important;
 }
 
 .cm-comment {
-    color: #676e95 !important;
+    color: #6c6f93 !important;
 }
 
-.cm-variable, .cm-string-2 {
-    color: #f07178 !important;
+.cm-variable,
+.cm-string-2 {
+    color: #27d797 !important;
 }
 
 .cm-def {
-    color: #82aaff !important;
+    color: #21bfc2 !important;
 }
 
 .cm-number {
-    color: #f78c6c !important;
+    color: #f09483 !important;
 }
 
 .cm-operator {
-    color: #89ddff !important;
+    color: #b877db !important;
 }
 
 .cm-bracket {
-    color: #cdd6f4 !important;
+    color: #d5d8da !important;
 }
 
 #Console {
-    background-color: #181a26;
+    background-color: #12141c;
     color: #e0e0e0;
     padding: 10px;
     display: flex;
@@ -195,7 +196,7 @@ html {
     font-size: 15px;
     line-height: 1.3;
     white-space: pre-wrap;
-    background-color: #222436;
+    background-color: #0a0b0f;
     color: #e0e0e0;
     max-height: 100%;
     margin-bottom: 15px;
@@ -203,7 +204,7 @@ html {
     padding: 5px;
 }
 
-#Output>* {
+#Output > * {
     font-family: "JetbrainsMono";
 }
 
@@ -211,7 +212,7 @@ html {
     width: 100%;
     padding: 8px;
     box-sizing: border-box;
-    background-color: #2c2f48;
+    background-color: #1a1c26;
     color: #e0e0e0;
     border: none;
     outline: none;
@@ -225,14 +226,14 @@ html {
     top: 0;
     width: 100%;
     height: 5px;
-    background-color: #5a5f7a;
+    background-color: #3d3f50;
     cursor: ns-resize;
 }
 
 .folder-icon {
     width: 16px;
     height: 16px;
-    background-color: #f1fa8c;
+    background-color: #fab38e;
     margin-right: 8px;
     display: inline-block;
 }
@@ -240,7 +241,7 @@ html {
 .file-icon {
     width: 16px;
     height: 16px;
-    background-color: #50fa7b;
+    background-color: #21bfc2;
     margin-right: 8px;
     display: inline-block;
 }
@@ -248,7 +249,7 @@ html {
 .file-icon-invalid {
     width: 16px;
     height: 16px;
-    background-color: #ff5555;
+    background-color: #e95378;
     margin-right: 8px;
     display: inline-block;
 }
@@ -271,4 +272,3 @@ html {
 li.open > ul.file-list {
     display: block !important;
 }
-
