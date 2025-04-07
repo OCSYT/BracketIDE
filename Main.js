@@ -8,7 +8,6 @@ const EscapeHtml = require("escape-html");
 
 const MaxFileSize = 100 * 1024 * 1024;
 
-//ploo
 function CreateWindow() {
   const Win = new BrowserWindow({
     width: 800,
