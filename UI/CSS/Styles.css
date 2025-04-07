@@ -90,6 +90,7 @@ html {
     height: 100%;
     font-family: "JetbrainsMono", monospace;
     background-color: #0a0b0f;
+    margin-bottom: 15px;
 }
 
 .CodeMirror {
@@ -201,7 +202,7 @@ html {
     max-height: 100%;
     margin-bottom: 15px;
     font-family: "JetbrainsMono";
-    padding: 5px;
+    padding: 15px;
 }
 
 #Output > * {
